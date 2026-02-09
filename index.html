@@ -150,17 +150,25 @@
   </div>
 
   <script>
+  document.addEventListener('DOMContentLoaded', () => {
     let current = 1;
-    function nextPage() {
-      document.getElementById(`page${current}`).classList.remove('active');
+
+    window.nextPage = function () {
+      const currentPage = document.getElementById('page' + current);
+      if (!currentPage) return;
+
+      currentPage.classList.remove('active');
       current++;
-      const next = document.getElementById(`page${current}`);
+
+      const next = document.getElementById('page' + current);
+      if (!next) return;
+
       next.classList.add('active');
 
       if (current === 4) {
         startValentineEffects();
       }
-    }
+    };
 
     function startValentineEffects() {
       typeText("I love you so much ❤️
@@ -173,9 +181,10 @@ Just wanted you to know how much I truly care about you 💕");
     function typeText(text) {
       let i = 0;
       const el = document.getElementById('typedText');
+      if (!el) return;
       el.innerHTML = '';
       const interval = setInterval(() => {
-        el.innerHTML += text[i];
+        el.innerHTML += text[i] || '';
         i++;
         if (i >= text.length) clearInterval(interval);
       }, 50);
@@ -219,7 +228,8 @@ Just wanted you to know how much I truly care about you 💕");
         setTimeout(() => c.remove(), 1000);
       }
     }
-  </script>
+  });
+</script>
 
 </body>
 </html>
