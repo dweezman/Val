@@ -1,83 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #b30000;
-      color: white;
-      overflow: hidden;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Valentine 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #b30000;
+    color: white;
+    overflow: hidden;
+  }
+
+  .page {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .page.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    margin-top: 30px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  .button {
+    padding: 15px 30px;
+    background: white;
+    color: #b30000;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+  .love-bg {
+    position: absolute;
+    font-size: 12rem;
+    opacity: 0.15;
+    animation: pulse 4s infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+  }
+
+  img.photo {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 20px;
+    border: 4px solid rgba(255,255,255,0.6);
+  }
+
+  .typed {
+    font-size: 1rem;
+    max-width: 90%;
+    line-height: 1.5;
+    margin-top: 20px;
+    min-height: 50px;
+  }
+
+  .gesture {
+    font-size: 1rem;
+    margin-top: 15px;
+    opacity: 0.9;
+  }
+
+  .ps {
+    font-size: 0.85rem;
+    margin-top: 40px;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes float {
+    to {
+      transform: translateY(-110vh);
+      opacity: 0;
     }
-    .page {
-      display: none;
-      height: 100vh;
-      width: 100vw;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
+  }
+
+  /* Confetti */
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
     }
-    .page.active {
-      display: flex;
-      flex-direction: column;
-    }
-    .arrow {
-      font-size: 3rem;
-      margin-top: 30px;
-      cursor: pointer;
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
-    .button {
-      padding: 15px 30px;
-      background: white;
-      color: #b30000;
-      border-radius: 30px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-top: 30px;
-    }
-    .love-bg {
-      position: absolute;
-      font-size: 12rem;
-      opacity: 0.15;
-      animation: pulse 4s infinite;
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 0.1; }
-      50% { opacity: 0.3; }
-    }
-    img.photo {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-top: 20px;
-      border: 4px solid rgba(255,255,255,0.6);
-    }
-    .typed {
-      font-size: 1.05rem;
-      max-width: 90%;
-      line-height: 1.5;
-      margin-top: 20px;
-    }
-  </style>
+  }
+</style>
 </head>
+
 <body>
 
+<!-- PAGE 1 -->
 <div class="page active" id="p1">
   <h1>Nice 😏 I got you to open the link</h1>
   <div class="arrow" onclick="go()">⬇️</div>
 </div>
 
+<!-- PAGE 2 -->
 <div class="page" id="p2">
   <p>
     I know you are probably wondering what this boy is up to hehe…<br><br>
@@ -87,35 +146,75 @@
   <div class="arrow" onclick="go()">⬇️</div>
 </div>
 
+<!-- PAGE 3 -->
 <div class="page" id="p3">
   <div class="button" onclick="go()">Click here to view surprise 💖🍒</div>
 </div>
 
+<!-- PAGE 4 -->
 <div class="page" id="p4">
   <div class="love-bg">LOVE</div>
-  <h1>Happy Valentine’s Darasimi 💕🍒</h1>
+
+  <h1 style="font-size:1.7rem;">Happy Valentine’s Darasimi 🍒🤍</h1>
+
   <div class="typed" id="typed"></div>
-  <img src="your-photo.jpg" class="photo">
+
+  <p class="gesture">Just a little gesture to show how much I care.</p>
+
+  <img src="your-photo.jpg" class="photo" />
+
+  <p class="ps">ps… I hope this made you smile.</p>
 </div>
 
 <script>
   let i = 1;
+
   function go() {
     document.getElementById('p' + i).classList.remove('active');
     i++;
     document.getElementById('p' + i).classList.add('active');
-    if (i === 4) type();
+
+    if (i === 4) {
+      typeText();
+      launchConfetti();
+      floatingHearts();
+    }
   }
 
-  function type() {
-    const text = "I love you so much ❤️ Just a little gesture to show how much I care 💕";
+  function typeText() {
+    const text = "I love you so much ❤️";
     let j = 0;
     const el = document.getElementById("typed");
+    el.textContent = "";
+
     const interval = setInterval(() => {
       el.textContent += text[j];
       j++;
       if (j === text.length) clearInterval(interval);
     }, 50);
+  }
+
+  function launchConfetti() {
+    for (let i = 0; i < 35; i++) {
+      const c = document.createElement("div");
+      c.className = "confetti";
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.animationDuration = 2 + Math.random() * 3 + "s";
+      c.style.background = ["#ffb6c1", "#fff", "#ff69b4"][Math.floor(Math.random()*3)];
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }
+  }
+
+  function floatingHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
   }
 </script>
 
